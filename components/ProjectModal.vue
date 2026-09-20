@@ -63,6 +63,8 @@ onBeforeUnmount(() => {
             </div>
 
             <div class="modal-body">
+              <ProjectDiagram v-if="project.diagram" :name="project.diagram" />
+
               <p>{{ project.description }}</p>
 
               <template v-if="project.metrics.length">

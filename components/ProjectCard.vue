@@ -9,6 +9,8 @@ defineEmits<{ open: [] }>()
   <!-- The button's ::after covers the card, so the whole surface is clickable
        without nesting a heading inside a <button>. -->
   <article class="pcard">
+    <ProjectVisual :project="project" />
+
     <div class="pcard-top">
       <span class="pcard-index">{{ String(index + 1).padStart(2, '0') }} / {{ project.year }}</span>
       <span class="pcard-status"><i />{{ project.status }}</span>

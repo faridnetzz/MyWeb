@@ -24,6 +24,10 @@ export type Project = {
   highlights: string[]
   metrics: { value: string; label: string }[]
   tags: string[]
+  /** filename in public/projects/; omitted projects fall back to a pattern */
+  cover?: string
+  /** built-in architecture diagram shown in the modal */
+  diagram?: 'sward' | 'seribuwajah'
 }
 
 export type Experience = {
@@ -156,7 +160,8 @@ export const usePortfolio = () => {
         { value: '6', label: 'analytics modules' },
         { value: 'Multi-tenant', label: 'architecture' }
       ],
-      tags: ['DeepStream', 'YOLO', 'TensorRT', 'Multi-tenant', 'Edge AI', 'Face Recognition', 'ANPR']
+      tags: ['DeepStream', 'YOLO', 'TensorRT', 'Multi-tenant', 'Edge AI', 'Face Recognition', 'ANPR'],
+      diagram: 'sward'
     },
     {
       slug: 'etle-korlantas',
@@ -208,7 +213,8 @@ export const usePortfolio = () => {
         { value: 'Live', label: 'watchlist matching' },
         { value: 'Gov', label: 'handover & training' }
       ],
-      tags: ['Face Recognition', 'Real-time', 'Smart City', 'CCTV Analytics', 'Dashboard']
+      tags: ['Face Recognition', 'Real-time', 'Smart City', 'CCTV Analytics', 'Dashboard'],
+      diagram: 'seribuwajah'
     },
     {
       slug: 'gns-industrial-safety',
@@ -235,30 +241,6 @@ export const usePortfolio = () => {
         { value: 'End-to-end', label: 'design to delivery' }
       ],
       tags: ['Fire/Smoke', 'PPE Detection', 'Crowd Monitoring', 'Hardware Sizing', 'Pre-sales']
-    },
-    {
-      slug: 'kai-railway-crossing',
-      name: 'Railway Crossing Safety',
-      client: 'PT Kereta Api Indonesia',
-      role: 'Proposal & Engineering',
-      year: '2025',
-      status: 'R&D',
-      featured: false,
-      category: 'Government',
-      summary:
-        'Automatic camera system for railway crossing safety — crossing data mapping and a detection proposal for KAI.',
-      description:
-        'Unmanned level crossings are one of the deadliest failure points on the network. The proposal maps crossings by risk, then specifies a detection system that watches for obstruction and unsafe crossing behaviour.',
-      highlights: [
-        'Crossing inventory and risk mapping as the basis for rollout priority',
-        'Obstruction and intrusion detection design for unmanned crossings',
-        'Camera and compute specification per crossing class'
-      ],
-      metrics: [
-        { value: 'Multi-point', label: 'crossing mapping' },
-        { value: 'Safety', label: 'detection design' }
-      ],
-      tags: ['Object Detection', 'Railway', 'Safety', 'Data Mapping', 'Proposal']
     },
     {
       slug: 'brin-emission-monitoring',
