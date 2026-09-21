@@ -28,6 +28,10 @@ export type Project = {
   cover?: string
   /** built-in architecture diagram shown in the modal */
   diagram?: 'sward' | 'seribuwajah'
+  /** transparent logo in public/projects/, shown on the card when there is no cover */
+  logo?: string
+  /** interactive mock dashboard rendered at the top of the modal */
+  demo?: 'sward'
 }
 
 export type Experience = {
@@ -161,7 +165,9 @@ export const usePortfolio = () => {
         { value: 'Multi-tenant', label: 'architecture' }
       ],
       tags: ['DeepStream', 'YOLO', 'TensorRT', 'Multi-tenant', 'Edge AI', 'Face Recognition', 'ANPR'],
-      diagram: 'sward'
+      diagram: 'sward',
+      logo: 'sward-logo.webp',
+      demo: 'sward'
     },
     {
       slug: 'etle-korlantas',

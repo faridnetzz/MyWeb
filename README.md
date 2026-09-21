@@ -33,6 +33,11 @@ components/
   ProjectsSection.vue         project unggulan + modal detail
   ProjectCard.vue             kartu project, seluruh permukaan clickable
   ProjectModal.vue            metrics, highlights, stack per project
+  ProjectVisual.vue           band visual kartu: cover, logo, atau pola fallback
+  ProjectDiagram.vue          diagram arsitektur SVG
+  sward/Demo.vue              mini dashboard SWard, data sintetis, lazy-loaded
+  sward/Camera.vue            feed kamera sintetis per scene
+  sward/Person.vue            siluet orang untuk feed kamera
   ExperienceSection.vue       timeline accordion
   StackSection.vue            tech stack bertab
   AboutSection.vue            narasi dan quick facts
@@ -86,6 +91,7 @@ Contoh konfigurasi nginx untuk hasil prerender:
 ```nginx
 location / {
     try_files $uri $uri/index.html $uri.html =404;
+    add_header Cache-Control "no-cache";
 }
 location /_nuxt/ {
     expires 1y;

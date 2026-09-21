@@ -23,14 +23,25 @@ const initials = computed(() =>
   <div class="pvisual">
     <img
       v-if="project.cover"
+      class="pvisual-cover"
       :src="`/projects/${project.cover}`"
       :alt="`${project.name} — ${project.client}`"
       loading="lazy"
       decoding="async"
     />
     <template v-else>
-      <span class="pvisual-mark" aria-hidden="true">{{ initials }}</span>
+      <img
+        v-if="project.logo"
+        class="pvisual-logo"
+        :src="`/projects/${project.logo}`"
+        :alt="`${project.name} logo`"
+        loading="lazy"
+        decoding="async"
+      />
+      <span v-else class="pvisual-mark" aria-hidden="true">{{ initials }}</span>
       <span class="pvisual-cat">{{ project.category }}</span>
     </template>
+
+    <span v-if="project.demo" class="pvisual-badge"><i />Live demo</span>
   </div>
 </template>

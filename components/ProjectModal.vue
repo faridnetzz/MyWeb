@@ -42,6 +42,7 @@ onBeforeUnmount(() => {
           <div
             ref="dialog"
             class="modal"
+            :class="{ 'is-wide': project.demo }"
             role="dialog"
             aria-modal="true"
             :aria-label="project.name"
@@ -63,7 +64,9 @@ onBeforeUnmount(() => {
             </div>
 
             <div class="modal-body">
-              <ProjectDiagram v-if="project.diagram" :name="project.diagram" />
+              <!-- the demo is the lead visual when there is one; the diagram moves below -->
+              <LazySwardDemo v-if="project.demo === 'sward'" />
+              <ProjectDiagram v-else-if="project.diagram" :name="project.diagram" />
 
               <p>{{ project.description }}</p>
 
@@ -75,6 +78,11 @@ onBeforeUnmount(() => {
                     <span>{{ m.label }}</span>
                   </div>
                 </div>
+              </template>
+
+              <template v-if="project.demo && project.diagram">
+                <div class="modal-label">Architecture</div>
+                <ProjectDiagram :name="project.diagram" />
               </template>
 
               <div class="modal-label">What I did</div>
