@@ -57,7 +57,7 @@ export const usePortfolio = () => {
     ],
     location: 'Jawa Barat, Indonesia',
     timezone: 'Asia/Jakarta',
-    email: 'faridnetzz@gmail.com',
+    email: 'ahmad@faridmuharram.dev',
     whatsapp: '+6281234567890', // TODO: real number
     available: true,
     availabilityNote: 'Open for AI / CV & R&D roles',

@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
-const siteUrl = 'https://ahmadfarid.dev' // TODO: real domain
+const siteUrl = 'https://faridmuharram.dev'
 const title = 'Ahmad Farid Muharram — AI & Computer Vision Developer'
 const description =
   'R&D Supervisor building multi-tenant AI video analytics platforms. DeepStream, YOLO, face recognition, ANPR, and real-time detection at production scale.'

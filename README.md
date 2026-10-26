@@ -79,7 +79,14 @@ assets/css/main.css           style komponen
 
 ## Deployment
 
-Static hosting cukup:
+Produksi: https://faridmuharram.dev, disajikan container `myweb` (nginx, port 8081) di `server-oss-1` lewat Cloudflare Tunnel `afm-tunnel` (container `myweb-tunnel`). Konfigurasi keduanya ada di `~/apps/myweb` pada server.
+
+```bash
+npm run generate
+tar -C .output/public -czf - . | ssh serveross1@<host> 'bash ~/apps/myweb/deploy.sh'
+```
+
+Static hosting lain juga cukup:
 
 ```bash
 npm run generate
@@ -107,8 +114,7 @@ Ditandai `TODO` di kode:
 1. URL LinkedIn dan nomor WhatsApp pada `composables/usePortfolio.ts`.
 2. `public/cv-ahmad-farid-muharram.pdf` — tombol Download CV belum punya berkas tujuan.
 3. `public/og.png` (1200×630) untuk preview pada social media.
-4. `siteUrl` pada `nuxt.config.ts`.
-5. Form kontak masih membuka aplikasi email lewat `mailto`. Ganti `submit()` pada `ContactSection.vue` dengan POST ke endpoint bila pesan perlu tersimpan.
+4. Form kontak masih membuka aplikasi email lewat `mailto`. Ganti `submit()` pada `ContactSection.vue` dengan POST ke endpoint bila pesan perlu tersimpan.
 
 ## Lisensi
 
