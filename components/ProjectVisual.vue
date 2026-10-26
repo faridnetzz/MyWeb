@@ -11,7 +11,8 @@ const props = defineProps<{ project: Project }>()
 const initials = computed(() =>
   props.project.name
     .split(/[\s/]+/)
-    .filter(Boolean)
+    // skip separators like "—" so "GNS — Safety" gives "GS", not "G—"
+    .filter((word) => /^[\p{L}\p{N}]/u.test(word))
     .slice(0, 2)
     .map((word) => word[0])
     .join('')
@@ -34,14 +35,14 @@ const initials = computed(() =>
         v-if="project.logo"
         class="pvisual-logo"
         :src="`/projects/${project.logo}`"
-        :alt="`${project.name} logo`"
+        :alt="$t('project.logoAlt', { name: project.name })"
         loading="lazy"
         decoding="async"
       />
       <span v-else class="pvisual-mark" aria-hidden="true">{{ initials }}</span>
-      <span class="pvisual-cat">{{ project.category }}</span>
+      <span class="pvisual-cat">{{ $t(`project.category.${project.category}`) }}</span>
     </template>
 
-    <span v-if="project.demo" class="pvisual-badge"><i />Live demo</span>
+    <span v-if="project.demo" class="pvisual-badge"><i />{{ $t('project.liveDemo') }}</span>
   </div>
 </template>

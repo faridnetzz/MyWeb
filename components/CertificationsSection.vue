@@ -6,9 +6,9 @@ const { certifications } = usePortfolio()
   <section class="section">
     <div class="wrap">
       <SectionHead
-        eyebrow="Credentials"
-        title="Where the hands-on skills came from"
-        lead="Mostly learned on deployment days rather than in a classroom — listed here with the context that earned them."
+        :eyebrow="$t('credentials.eyebrow')"
+        :title="$t('credentials.title')"
+        :lead="$t('credentials.lead')"
       />
 
       <div class="certs">

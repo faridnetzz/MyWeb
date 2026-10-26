@@ -2,7 +2,7 @@
 const { marquee } = usePortfolio()
 
 // the track is duplicated so translateX(-50%) loops seamlessly
-const items = [...marquee, ...marquee]
+const items = computed(() => [...marquee.value, ...marquee.value])
 </script>
 
 <template>

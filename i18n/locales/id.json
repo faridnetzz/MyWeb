@@ -1,0 +1,131 @@
+{
+  "lang": {
+    "switch": "Ganti ke {name}"
+  },
+  "nav": {
+    "home": "Beranda",
+    "sections": "Section",
+    "allProjects": "Semua project"
+  },
+  "header": {
+    "search": "Cari",
+    "openPalette": "Buka command palette",
+    "toggleTheme": "Ganti tema warna",
+    "toggleMenu": "Buka/tutup menu",
+    "searchMobile": "Cari project atau section",
+    "contactMe": "Hubungi saya"
+  },
+  "hero": {
+    "viewProjects": "Lihat project",
+    "downloadCv": "Unduh CV",
+    "statusOpen": "terbuka untuk peluang",
+    "statusBusy": "sedang fokus",
+    "reply": "< 24 jam"
+  },
+  "about": {
+    "eyebrow": "Tentang",
+    "title": "Engineer dulu, baru supervisor.",
+    "facts": "Sekilas"
+  },
+  "services": {
+    "eyebrow": "Layanan",
+    "title": "Yang bisa saya bantu",
+    "lead": "Empat hal yang paling sering diminta dari saya — biasanya dua atau tiga sekaligus dalam satu project."
+  },
+  "work": {
+    "eyebrow": "Project pilihan",
+    "title": "Sistem yang berjalan di kamera sungguhan.",
+    "lead": "Deployment produksi, bukan demo. Klik kartu untuk melihat scope, batasan, dan apa yang benar-benar saya kerjakan.",
+    "all": "Semua project ({count})"
+  },
+  "experience": {
+    "eyebrow": "Karier",
+    "title": "Dari menyambung fiber sampai memimpin R&D",
+    "lead": "Sepuluh tahun naik ke lapisan berikutnya — kabel, lalu jaringan, lalu kode, lalu tim yang menulisnya."
+  },
+  "stack": {
+    "eyebrow": "Toolkit",
+    "title": "Yang biasa saya pakai",
+    "lead": "Dikelompokkan berdasarkan fungsinya, bukan logonya — semua yang ada di sini sudah dipakai di project sungguhan."
+  },
+  "credentials": {
+    "eyebrow": "Kredensial",
+    "title": "Dari mana keahlian lapangan ini berasal",
+    "lead": "Sebagian besar dipelajari langsung saat deployment, bukan di ruang kelas — dicantumkan di sini beserta konteksnya."
+  },
+  "contact": {
+    "eyebrow": "Kontak",
+    "title": "Punya project atau posisi yang cocok?",
+    "lead": "Cerita saja soal kameranya, lokasinya, dan apa yang mau dideteksi — sisanya kita bedah bareng.",
+    "location": "Lokasi",
+    "name": "Nama",
+    "namePlaceholder": "Nama kamu",
+    "email": "Email",
+    "emailPlaceholder": "kamu{'@'}email.com",
+    "message": "Pesan",
+    "messagePlaceholder": "Ceritain project atau posisinya…",
+    "send": "Kirim pesan",
+    "note": "Form ini membuka aplikasi email kamu — belum ada backend yang menyimpan pesan.",
+    "subject": "Halo Farid — dari {name}",
+    "subjectFallback": "website"
+  },
+  "project": {
+    "viewDetails": "Lihat detail",
+    "liveDemo": "Demo langsung",
+    "logoAlt": "Logo {name}",
+    "atAGlance": "Sekilas",
+    "architecture": "Arsitektur",
+    "whatIDid": "Yang saya kerjakan",
+    "stackScope": "Stack & scope",
+    "close": "Tutup",
+    "ask": "Tanya soal project ini",
+    "diagramLabel": "Diagram arsitektur: {steps}",
+    "status": {
+      "production": "Produksi",
+      "ongoing": "Berjalan",
+      "delivered": "Selesai",
+      "rnd": "R&D"
+    },
+    "category": {
+      "platform": "Platform AI",
+      "government": "Pemerintah",
+      "smartCity": "Smart City",
+      "commercial": "Komersial",
+      "mobile": "Mobile"
+    }
+  },
+  "archive": {
+    "seoTitle": "Project",
+    "seoDescription": "Semua project: platform AI video analytics, deployment ETLE nasional, CCTV smart city, dan lainnya.",
+    "back": "Kembali ke beranda",
+    "eyebrow": "Arsip",
+    "title": "Semua project",
+    "lead": "{count} project — dari platform AI multi-tenant sampai deployment ETLE skala nasional. Klik salah satu untuk melihat scope dan detail teknisnya.",
+    "all": "Semua"
+  },
+  "footer": {
+    "tagline": "{title} — membangun AI video analytics yang tetap andal di lokasi sungguhan.",
+    "navigate": "Navigasi",
+    "elsewhere": "Terhubung",
+    "status": "Status",
+    "open": "Terbuka untuk peluang",
+    "notLooking": "Sedang tidak mencari",
+    "built": "Dibuat dengan Nuxt 3"
+  },
+  "palette": {
+    "label": "Command palette",
+    "placeholder": "Cari section, project, atau action…",
+    "search": "Cari",
+    "navigation": "Navigasi",
+    "projects": "Project",
+    "actions": "Aksi",
+    "toggleTheme": "Ganti tema terang / gelap",
+    "copyEmail": "Salin email — {email}",
+    "copied": "Email disalin",
+    "empty": "Nggak ada yang cocok sama “{query}”.",
+    "navigate": "navigasi",
+    "select": "pilih",
+    "close": "tutup"
+  },
+  "backToTop": "Kembali ke atas"
+}

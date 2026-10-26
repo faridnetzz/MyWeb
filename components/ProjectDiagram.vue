@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { resolveTranslatable, type Locale, type Translatable } from '~/utils/i18n'
+
 /**
  * Architecture diagrams drawn from the project descriptions — no screenshots,
  * so nothing here exposes client footage, faces, or plate numbers.
@@ -14,26 +16,33 @@ type Diagram = {
 }
 
 const props = defineProps<{ name: string }>()
+const { locale } = useI18n()
 
-const diagrams: Record<string, Diagram> = {
+const diagrams: Record<string, Translatable<Diagram>> = {
   sward: {
     nodes: [
-      { title: 'CAMERAS', sub: 'RTSP · multi-site' },
+      { title: { en: 'CAMERAS', id: 'KAMERA' }, sub: { en: 'RTSP · multi-site', id: 'RTSP · multilokasi' } },
       { title: 'DEEPSTREAM', sub: 'decode · batch' },
-      { title: 'ANALYTICS', sub: 'FR · ANPR · PPE' },
-      { title: 'DASHBOARD', sub: 'scoped per tenant' }
+      { title: { en: 'ANALYTICS', id: 'ANALITIK' }, sub: { en: 'FR · ANPR · PPE', id: 'FR · ANPR · APD' } },
+      { title: 'DASHBOARD', sub: { en: 'scoped per tenant', id: 'dipisah per tenant' } }
     ],
-    group: { label: 'SINGLE GPU NODE', from: 1, to: 2 },
-    caption: 'Streams are added and removed at runtime; each tenant sees only its own sites and events.'
+    group: { label: { en: 'SINGLE GPU NODE', id: 'SATU NODE GPU' }, from: 1, to: 2 },
+    caption: {
+      en: 'Streams are added and removed at runtime; each tenant sees only its own sites and events.',
+      id: 'Stream ditambah dan dihapus saat runtime; setiap tenant hanya melihat lokasi dan event miliknya sendiri.'
+    }
   },
   seribuwajah: {
     nodes: [
-      { title: 'CITY CCTV', sub: 'public CCTV feeds' },
-      { title: 'DETECT', sub: 'low-light tuned' },
-      { title: 'EMBED + MATCH', sub: 'against watchlist' },
-      { title: 'OPERATOR', sub: 'alert + review' }
+      { title: { en: 'CITY CCTV', id: 'CCTV KOTA' }, sub: { en: 'public CCTV feeds', id: 'feed CCTV publik' } },
+      { title: { en: 'DETECT', id: 'DETEKSI' }, sub: { en: 'low-light tuned', id: 'tuning low-light' } },
+      { title: 'EMBED + MATCH', sub: { en: 'against watchlist', id: 'dengan watchlist' } },
+      { title: 'OPERATOR', sub: { en: 'alert + review', id: 'alert + tinjau' } }
     ],
-    caption: 'Cameras, angles, and bandwidth were all pre-existing constraints — the tuning happened downstream.'
+    caption: {
+      en: 'Cameras, angles, and bandwidth were all pre-existing constraints — the tuning happened downstream.',
+      id: 'Kamera, sudut, dan bandwidth sudah menjadi batasan sejak awal — tuning-nya dilakukan di tahap berikutnya.'
+    }
   }
 }
 
@@ -42,7 +51,10 @@ const NODE_Y = 70
 const NODE_H = 64
 const xs = [16, 200, 384, 568]
 
-const diagram = computed(() => diagrams[props.name])
+const diagram = computed(() => {
+  const source = diagrams[props.name]
+  return source && resolveTranslatable<Diagram>(source, locale.value as Locale)
+})
 
 const group = computed(() => {
   const g = diagram.value?.group
@@ -57,7 +69,7 @@ const arrows = computed(() => xs.slice(0, 3).map((x, i) => ({ from: x + NODE_W +
 
 <template>
   <figure v-if="diagram" class="pdiagram">
-    <svg viewBox="0 0 734 196" role="img" :aria-label="`Architecture diagram: ${diagram.nodes.map((n) => n.title).join(' to ')}`">
+    <svg viewBox="0 0 734 196" role="img" :aria-label="$t('project.diagramLabel', { steps: diagram.nodes.map((n) => n.title).join(' → ') })">
       <g v-if="group">
         <rect
           :x="group.x"

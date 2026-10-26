@@ -3,6 +3,7 @@ import type { Project } from '~/composables/usePortfolio'
 
 const props = defineProps<{ project: Project | null }>()
 const emit = defineEmits<{ close: [] }>()
+const localePath = useLocalePath()
 
 const dialog = ref<HTMLElement | null>(null)
 
@@ -55,10 +56,10 @@ onBeforeUnmount(() => {
                   <span class="tag tag-accent">{{ project.role }}</span>
                   <span class="tag">{{ project.client }}</span>
                   <span class="tag">{{ project.year }}</span>
-                  <span class="tag">{{ project.status }}</span>
+                  <span class="tag">{{ $t(`project.status.${project.status}`) }}</span>
                 </div>
               </div>
-              <button class="icon-btn" type="button" aria-label="Close" @click="emit('close')">
+              <button class="icon-btn" type="button" :aria-label="$t('project.close')" @click="emit('close')">
                 <AppIcon name="close" />
               </button>
             </div>
@@ -71,7 +72,7 @@ onBeforeUnmount(() => {
               <p>{{ project.description }}</p>
 
               <template v-if="project.metrics.length">
-                <div class="modal-label">At a glance</div>
+                <div class="modal-label">{{ $t('project.atAGlance') }}</div>
                 <div class="modal-metrics">
                   <div v-for="m in project.metrics" :key="m.label" class="modal-metric">
                     <b>{{ m.value }}</b>
@@ -81,26 +82,28 @@ onBeforeUnmount(() => {
               </template>
 
               <template v-if="project.demo && project.diagram">
-                <div class="modal-label">Architecture</div>
+                <div class="modal-label">{{ $t('project.architecture') }}</div>
                 <ProjectDiagram :name="project.diagram" />
               </template>
 
-              <div class="modal-label">What I did</div>
+              <div class="modal-label">{{ $t('project.whatIDid') }}</div>
               <ul class="modal-points">
                 <li v-for="point in project.highlights" :key="point">{{ point }}</li>
               </ul>
 
-              <div class="modal-label">Stack &amp; scope</div>
+              <div class="modal-label">{{ $t('project.stackScope') }}</div>
               <div class="pcard-tags">
                 <span v-for="tag in project.tags" :key="tag" class="tag">{{ tag }}</span>
               </div>
             </div>
 
             <div class="modal-foot">
-              <button class="btn btn-ghost btn-sm" type="button" @click="emit('close')">Tutup</button>
-              <NuxtLink class="btn btn-primary btn-sm" to="/#contact" @click="emit('close')">
+              <button class="btn btn-ghost btn-sm" type="button" @click="emit('close')">
+                {{ $t('project.close') }}
+              </button>
+              <NuxtLink class="btn btn-primary btn-sm" :to="localePath('/#contact')" @click="emit('close')">
                 <AppIcon name="mail" />
-                Tanya soal project ini
+                {{ $t('project.ask') }}
               </NuxtLink>
             </div>
           </div>

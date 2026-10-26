@@ -1,9 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import { DEFAULT_LOCALE, LOCALES, localeRedirectScript } from './utils/i18n'
 
 const siteUrl = 'https://faridmuharram.dev'
-const title = 'Ahmad Farid Muharram — AI & Computer Vision Developer'
-const description =
-  'R&D Supervisor building multi-tenant AI video analytics platforms. DeepStream, YOLO, face recognition, ANPR, and real-time detection at production scale.'
 
 /**
  * Runs before first paint so the stored theme is applied without a flash.
@@ -15,33 +13,43 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-01-01',
   devtools: { enabled: true },
 
+  modules: ['@nuxtjs/i18n'],
+
   css: ['~/assets/css/tokens.css', '~/assets/css/main.css'],
+
+  /**
+   * English lives at /, Indonesian at /id. Each page sets its own title and
+   * description; app.vue adds lang, canonical, hreflang, and og:locale.
+   *
+   * The module's language detection is off: on a static site it can only
+   * redirect after hydrating, so localeRedirectScript does it before paint
+   * instead, and app.vue remembers the choice in a cookie.
+   */
+  i18n: {
+    baseUrl: siteUrl,
+    defaultLocale: DEFAULT_LOCALE,
+    strategy: 'prefix_except_default',
+    locales: LOCALES.map((locale) => ({ ...locale, file: `${locale.code}.json` })),
+    detectBrowserLanguage: false
+  },
 
   app: {
     pageTransition: { name: 'page', mode: 'out-in' },
     head: {
-      title,
-      htmlAttrs: { lang: 'en', 'data-theme': 'dark' },
+      htmlAttrs: { 'data-theme': 'dark' },
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1, viewport-fit=cover' },
-        { name: 'description', content: description },
         { name: 'author', content: 'Ahmad Farid Muharram' },
         { name: 'theme-color', content: '#08080a' },
 
         { property: 'og:type', content: 'website' },
-        { property: 'og:url', content: siteUrl },
-        { property: 'og:title', content: title },
-        { property: 'og:description', content: description },
         { property: 'og:image', content: `${siteUrl}/og.png` },
 
         { name: 'twitter:card', content: 'summary_large_image' },
-        { name: 'twitter:title', content: title },
-        { name: 'twitter:description', content: description },
         { name: 'twitter:image', content: `${siteUrl}/og.png` }
       ],
       link: [
-        { rel: 'canonical', href: siteUrl },
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
         {
@@ -49,7 +57,10 @@ export default defineNuxtConfig({
           href: 'https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap'
         }
       ],
-      script: [{ innerHTML: themeScript, tagPosition: 'head' }],
+      script: [
+        { innerHTML: localeRedirectScript, tagPosition: 'head' },
+        { innerHTML: themeScript, tagPosition: 'head' }
+      ],
       // without JS the reveal animation never fires, so show everything
       noscript: [{ innerHTML: '<style>.reveal{opacity:1!important;transform:none!important}</style>' }]
     }

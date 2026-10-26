@@ -1,8 +1,8 @@
 <script setup lang="ts">
 const { stack } = usePortfolio()
 
-const activeKey = ref(stack[0].key)
-const activeGroup = computed(() => stack.find((g) => g.key === activeKey.value) ?? stack[0])
+const activeKey = ref(stack.value[0].key)
+const activeGroup = computed(() => stack.value.find((g) => g.key === activeKey.value) ?? stack.value[0])
 </script>
 
 <template>
@@ -10,9 +10,9 @@ const activeGroup = computed(() => stack.find((g) => g.key === activeKey.value) 
     <div class="wrap">
       <SectionHead
         num="05"
-        eyebrow="Toolkit"
-        title="Things I reach for"
-        lead="Grouped by what they're for rather than by logo — everything here has shipped in something real."
+        :eyebrow="$t('stack.eyebrow')"
+        :title="$t('stack.title')"
+        :lead="$t('stack.lead')"
       />
 
       <div class="reveal" v-reveal>

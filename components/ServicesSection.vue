@@ -7,9 +7,9 @@ const { services } = usePortfolio()
     <div class="wrap">
       <SectionHead
         num="02"
-        eyebrow="Services"
-        title="What I can help with"
-        lead="Four things I get asked for most — usually two or three of them on the same project."
+        :eyebrow="$t('services.eyebrow')"
+        :title="$t('services.title')"
+        :lead="$t('services.lead')"
       />
 
       <div class="services">

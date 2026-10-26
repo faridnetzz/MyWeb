@@ -13,7 +13,7 @@ defineEmits<{ open: [] }>()
 
     <div class="pcard-top">
       <span class="pcard-index">{{ String(index + 1).padStart(2, '0') }} / {{ project.year }}</span>
-      <span class="pcard-status"><i />{{ project.status }}</span>
+      <span class="pcard-status"><i />{{ $t(`project.status.${project.status}`) }}</span>
     </div>
 
     <h3>{{ project.name }}</h3>
@@ -26,7 +26,7 @@ defineEmits<{ open: [] }>()
     </div>
 
     <button class="pcard-more" type="button" @click="$emit('open')">
-      Lihat detail
+      {{ $t('project.viewDetails') }}
       <AppIcon name="arrow-right" />
       <span class="sr-only">— {{ project.name }}</span>
     </button>

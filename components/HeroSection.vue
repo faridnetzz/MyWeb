@@ -1,23 +1,25 @@
 <script setup lang="ts">
 const { profile, socials } = usePortfolio()
-const clock = useClock(profile.timezone)
+const localePath = useLocalePath()
+const clock = useClock(profile.value.timezone)
 
 /**
  * Typewriter over profile.roles.
  * Starts on the first role so the server HTML and the first client frame match.
  */
-const typed = ref(profile.roles[0])
+const typed = ref(profile.value.roles[0])
 let timer: ReturnType<typeof setTimeout> | undefined
 
 onMounted(() => {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
 
   let roleIndex = 0
-  let charIndex = profile.roles[0].length
+  const { roles } = profile.value
+  let charIndex = roles[0].length
   let deleting = false
 
   const step = () => {
-    const word = profile.roles[roleIndex]
+    const word = roles[roleIndex]
     charIndex += deleting ? -1 : 1
     typed.value = word.slice(0, charIndex)
 
@@ -28,7 +30,7 @@ onMounted(() => {
       delay = 2200
     } else if (deleting && charIndex === 0) {
       deleting = false
-      roleIndex = (roleIndex + 1) % profile.roles.length
+      roleIndex = (roleIndex + 1) % roles.length
       delay = 320
     }
 
@@ -63,13 +65,13 @@ onBeforeUnmount(() => clearTimeout(timer))
         <p class="hero-sub reveal" v-reveal="200">{{ profile.tagline }}</p>
 
         <div class="hero-cta reveal" v-reveal="260">
-          <NuxtLink class="btn btn-primary" to="/#work">
+          <NuxtLink class="btn btn-primary" :to="localePath('/#work')">
             <AppIcon name="grid" />
-            Lihat project
+            {{ $t('hero.viewProjects') }}
           </NuxtLink>
           <a class="btn btn-ghost" :href="profile.resumeUrl" download>
             <AppIcon name="file-text" />
-            Download CV
+            {{ $t('hero.downloadCv') }}
           </a>
         </div>
 
@@ -102,7 +104,7 @@ onBeforeUnmount(() => clearTimeout(timer))
         <div class="hero-card-body">
           <div class="hero-card-row">
             <span class="k">status</span>
-            <span class="v s">{{ profile.available ? 'open to work' : 'heads-down' }}</span>
+            <span class="v s">{{ profile.available ? $t('hero.statusOpen') : $t('hero.statusBusy') }}</span>
           </div>
           <div class="hero-card-row">
             <span class="k">role</span>
@@ -125,7 +127,7 @@ onBeforeUnmount(() => clearTimeout(timer))
           </div>
           <div class="hero-card-row">
             <span class="k">reply</span>
-            <span class="v">&lt; 24 jam</span>
+            <span class="v">{{ $t('hero.reply') }}</span>
           </div>
         </div>
       </div>

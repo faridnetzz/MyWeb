@@ -1,6 +1,6 @@
 # Portfolio — Ahmad Farid Muharram
 
-Situs portofolio personal. Nuxt 3, dark-first dengan light mode opsional, satu halaman utama plus halaman arsip project.
+Situs portofolio personal. Nuxt 3, dark-first dengan light mode opsional, dua bahasa (English di `/`, Bahasa Indonesia di `/id`), satu halaman utama plus halaman arsip project.
 
 ## Menjalankan
 
@@ -20,13 +20,14 @@ Butuh Node 18 ke atas.
 ## Struktur
 
 ```
-app.vue                       NuxtLayout + NuxtPage
+app.vue                       NuxtLayout + NuxtPage, head per bahasa, cookie bahasa
 layouts/default.vue           header, main, footer, widget global
 pages/
   index.vue                   halaman utama, merangkai section
   projects/index.vue          arsip project dengan filter kategori
 components/
-  SiteHeader.vue              sticky nav + scroll-spy, theme toggle, drawer mobile
+  SiteHeader.vue              sticky nav + scroll-spy, tombol bahasa, theme toggle, drawer mobile
+  LanguageSwitch.vue          tombol EN / ID
   SiteFooter.vue              sitemap ringkas, jam lokal Jakarta
   CommandPalette.vue          Cmd/Ctrl+K untuk section, project, dan action
   HeroSection.vue             availability badge, typewriter role, kartu status
@@ -51,12 +52,16 @@ components/
   BackToTop.vue               tombol kembali ke atas
   AppIcon.vue                 set ikon stroke 24×24
 composables/
-  usePortfolio.ts             seluruh konten situs
+  usePortfolio.ts             seluruh konten situs, dalam dua bahasa
+  useLanguageSwitch.ts        bahasa tujuan dan path-nya untuk tombol dan palette
+  usePageSeo.ts               title + description, disalin ke tag OG dan Twitter
   useTheme.ts                 dark/light, persist di localStorage
   useScrollSpy.ts             nav link aktif mengikuti posisi scroll
   useClock.ts                 jam Asia/Jakarta
   useCommandPalette.ts        state buka/tutup palette
 plugins/reveal.ts             directive v-reveal
+utils/i18n.ts                 daftar bahasa, tipe Translatable, script redirect bahasa
+i18n/locales/{en,id}.json     teks antarmuka: tombol, judul section, label form
 assets/css/tokens.css         design token dan reset
 assets/css/main.css           style komponen
 ```
@@ -64,6 +69,10 @@ assets/css/main.css           style komponen
 ## Konvensi
 
 - Seluruh teks, project, pengalaman, dan skill berada di `composables/usePortfolio.ts`. Tidak ada komponen yang menulis konten secara hardcode.
+- Teks yang berbeda per bahasa ditulis berdampingan: `{ en: '…', id: '…' }`. String biasa (nama, istilah teknis) dipakai di kedua bahasa. Bahasa yang terlewat menjadi error TypeScript, bukan teks kosong di halaman.
+- Teks antarmuka (tombol, judul section, label form) ada di `i18n/locales/en.json` dan `id.json`, dengan key yang sama di kedua file. Di template pakai `$t('key')`, di script `t` dari `useI18n()`. Karakter `@` di pesan harus ditulis `{'@'}`.
+- Link internal selalu lewat `localePath('/projects')` atau `localePath('/#work')`, supaya pengunjung tetap di bahasanya.
+- Status dan kategori project disimpan sebagai key (`production`, `smartCity`, …); labelnya ada di `project.status` dan `project.category` pada file locale.
 - Warna, font, radius, dan spacing berada di `assets/css/tokens.css`. Mengganti `--accent` sudah cukup untuk reskin; light mode ikut menyesuaikan.
 - Section baru: buat komponen, gunakan `<SectionHead>`, daftarkan di `pages/index.vue`, lalu tambahkan entri `navItems` agar muncul di navigasi dan command palette.
 - Animasi masuk: tambahkan `class="reveal" v-reveal` pada elemen. Nilai opsional berupa delay dalam milidetik, misal `v-reveal="120"` untuk stagger.
@@ -71,6 +80,8 @@ assets/css/main.css           style komponen
 ## Catatan implementasi
 
 - Tema dipasang lewat inline script di `<head>` sebelum paint, sehingga tidak ada flash saat reload.
+- Bahasa: hanya `/` yang bisa redirect, ke bahasa terakhir yang dipakai (cookie `afm-lang`) atau, pada kunjungan pertama, ke bahasa utama browser. Redirect ini juga inline script di `<head>`, karena deteksi bawaan `@nuxtjs/i18n` di situs statis baru jalan setelah hydrate: HTML Inggris ter-hydrate dalam bahasa lain (hydration mismatch) dan sempat tampil sebelum pindah. Link ke halaman lain tidak pernah di-redirect.
+- `usePortfolio()` mengembalikan computed ref. Header, footer, dan command palette ada di layout yang tidak di-remount saat ganti bahasa, jadi nilai biasa akan tertinggal di bahasa lama. Di script pakai `.value`; di template otomatis.
 - `v-reveal` bersifat universal: no-op di server, `IntersectionObserver` di client. Class `reveal` ditulis langsung di template agar state tersembunyi sudah ada di HTML hasil SSR.
 - State reveal memakai atribut `data-in`, bukan class. Elemen yang juga memiliki binding `:class` akan kehilangan class yang ditambahkan secara imperatif, karena Vue menulis ulang `el.className` setiap kali melakukan patch.
 - `prefers-reduced-motion` dihormati: animasi dimatikan dan konten langsung tampil.

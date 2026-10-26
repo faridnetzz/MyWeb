@@ -10,8 +10,8 @@ const emphasise = (text: string) => text.replace(/\*\*(.+?)\*\*/g, '<strong>$1</
     <div class="wrap">
       <SectionHead
         num="01"
-        eyebrow="About"
-        title="Engineer first, supervisor second."
+        :eyebrow="$t('about.eyebrow')"
+        :title="$t('about.title')"
         :lead="profile.summary"
       />
 
@@ -27,7 +27,7 @@ const emphasise = (text: string) => text.replace(/\*\*(.+?)\*\*/g, '<strong>$1</
         </div>
 
         <aside class="about-panel reveal" v-reveal="120">
-          <h3>Quick facts</h3>
+          <h3>{{ $t('about.facts') }}</h3>
           <ul class="about-list">
             <li v-for="fact in about.facts" :key="fact.k">
               <b>{{ fact.k }}</b>

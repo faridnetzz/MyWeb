@@ -1,11 +1,14 @@
 <script setup lang="ts">
 const { profile, navItems } = usePortfolio()
+const localePath = useLocalePath()
+const getRouteBaseName = useRouteBaseName()
 const route = useRoute()
 const { toggle: toggleTheme } = useTheme()
 const palette = useCommandPalette()
 
-const active = useScrollSpy(navItems.map((i) => i.id))
-const isHome = computed(() => route.path === '/')
+// section ids are the same in every language
+const active = useScrollSpy(navItems.value.map((i) => i.id))
+const isHome = computed(() => getRouteBaseName(route) === 'index')
 
 const stuck = ref(false)
 const menuOpen = ref(false)
@@ -37,16 +40,16 @@ const isActive = (id: string) => isHome.value && active.value === id
 <template>
   <header class="header" :class="{ 'is-stuck': stuck || menuOpen }">
     <div class="wrap header-inner">
-      <NuxtLink to="/" class="brand" aria-label="Home">
+      <NuxtLink :to="localePath('/')" class="brand" :aria-label="$t('nav.home')">
         <span class="brand-mark">{{ profile.initials }}</span>
         <span class="brand-name">farid<b>.</b></span>
       </NuxtLink>
 
-      <nav class="nav" aria-label="Sections">
+      <nav class="nav" :aria-label="$t('nav.sections')">
         <NuxtLink
           v-for="item in navItems"
           :key="item.id"
-          :to="`/#${item.id}`"
+          :to="localePath(`/#${item.id}`)"
           :class="{ 'is-active': isActive(item.id) }"
         >
           {{ item.label }}
@@ -54,13 +57,15 @@ const isActive = (id: string) => isHome.value && active.value === id
       </nav>
 
       <div class="header-tools">
-        <button class="kbd-btn" type="button" aria-label="Open command palette" @click="palette.show()">
+        <button class="kbd-btn" type="button" :aria-label="$t('header.openPalette')" @click="palette.show()">
           <AppIcon name="search" />
-          <span>Search</span>
+          <span>{{ $t('header.search') }}</span>
           <kbd>⌘K</kbd>
         </button>
 
-        <button class="icon-btn theme-toggle" type="button" aria-label="Toggle colour theme" @click="toggleTheme">
+        <LanguageSwitch />
+
+        <button class="icon-btn theme-toggle" type="button" :aria-label="$t('header.toggleTheme')" @click="toggleTheme">
           <AppIcon name="sun" class="icon i-sun" />
           <AppIcon name="moon" class="icon i-moon" />
         </button>
@@ -69,7 +74,7 @@ const isActive = (id: string) => isHome.value && active.value === id
           class="icon-btn menu-btn"
           type="button"
           :aria-expanded="menuOpen"
-          aria-label="Toggle menu"
+          :aria-label="$t('header.toggleMenu')"
           @click="menuOpen = !menuOpen"
         >
           <AppIcon :name="menuOpen ? 'close' : 'menu'" />
@@ -85,7 +90,7 @@ const isActive = (id: string) => isHome.value && active.value === id
         <NuxtLink
           v-for="item in navItems"
           :key="item.id"
-          :to="`/#${item.id}`"
+          :to="localePath(`/#${item.id}`)"
           :class="{ 'is-active': isActive(item.id) }"
           @click="menuOpen = false"
         >
@@ -93,8 +98,8 @@ const isActive = (id: string) => isHome.value && active.value === id
           <span>{{ item.num }}</span>
         </NuxtLink>
 
-        <NuxtLink to="/projects" @click="menuOpen = false">
-          All projects
+        <NuxtLink :to="localePath('/projects')" @click="menuOpen = false">
+          {{ $t('nav.allProjects') }}
           <span>↗</span>
         </NuxtLink>
 
@@ -106,12 +111,12 @@ const isActive = (id: string) => isHome.value && active.value === id
           @click="menuOpen = false; palette.show()"
         >
           <AppIcon name="search" />
-          Cari project atau section
+          {{ $t('header.searchMobile') }}
         </button>
 
         <a class="btn btn-primary" style="margin-top: 10px; width: 100%" :href="`mailto:${profile.email}`">
           <AppIcon name="mail" />
-          Hubungi saya
+          {{ $t('header.contactMe') }}
         </a>
         </div>
       </div>

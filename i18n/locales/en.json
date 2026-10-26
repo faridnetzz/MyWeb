@@ -1,0 +1,131 @@
+{
+  "lang": {
+    "switch": "Switch to {name}"
+  },
+  "nav": {
+    "home": "Home",
+    "sections": "Sections",
+    "allProjects": "All projects"
+  },
+  "header": {
+    "search": "Search",
+    "openPalette": "Open command palette",
+    "toggleTheme": "Toggle colour theme",
+    "toggleMenu": "Toggle menu",
+    "searchMobile": "Search projects or sections",
+    "contactMe": "Get in touch"
+  },
+  "hero": {
+    "viewProjects": "View projects",
+    "downloadCv": "Download CV",
+    "statusOpen": "open to work",
+    "statusBusy": "heads-down",
+    "reply": "< 24 hours"
+  },
+  "about": {
+    "eyebrow": "About",
+    "title": "Engineer first, supervisor second.",
+    "facts": "Quick facts"
+  },
+  "services": {
+    "eyebrow": "Services",
+    "title": "What I can help with",
+    "lead": "Four things I get asked for most — usually two or three of them on the same project."
+  },
+  "work": {
+    "eyebrow": "Selected work",
+    "title": "Systems that run on real cameras.",
+    "lead": "Production deployments, not demos. Click a card for the scope, the constraints, and what I actually shipped.",
+    "all": "All projects ({count})"
+  },
+  "experience": {
+    "eyebrow": "Career",
+    "title": "From splicing fiber to leading R&D",
+    "lead": "Ten years of moving up the stack — cables, then networks, then code, then the team that writes it."
+  },
+  "stack": {
+    "eyebrow": "Toolkit",
+    "title": "Things I reach for",
+    "lead": "Grouped by what they're for rather than by logo — everything here has shipped in something real."
+  },
+  "credentials": {
+    "eyebrow": "Credentials",
+    "title": "Where the hands-on skills came from",
+    "lead": "Mostly learned on deployment days rather than in a classroom — listed here with the context that earned them."
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Got a project or a role that fits?",
+    "lead": "Tell me about the cameras, the site, and what you need detected — we'll work out the rest together.",
+    "location": "Location",
+    "name": "Name",
+    "namePlaceholder": "Your name",
+    "email": "Email",
+    "emailPlaceholder": "you{'@'}email.com",
+    "message": "Message",
+    "messagePlaceholder": "Tell me about the project or the role…",
+    "send": "Send message",
+    "note": "This form opens your email app — nothing is stored on a server yet.",
+    "subject": "Hi Farid — from {name}",
+    "subjectFallback": "the website"
+  },
+  "project": {
+    "viewDetails": "View details",
+    "liveDemo": "Live demo",
+    "logoAlt": "{name} logo",
+    "atAGlance": "At a glance",
+    "architecture": "Architecture",
+    "whatIDid": "What I did",
+    "stackScope": "Stack & scope",
+    "close": "Close",
+    "ask": "Ask about this project",
+    "diagramLabel": "Architecture diagram: {steps}",
+    "status": {
+      "production": "Production",
+      "ongoing": "Ongoing",
+      "delivered": "Delivered",
+      "rnd": "R&D"
+    },
+    "category": {
+      "platform": "AI Platform",
+      "government": "Government",
+      "smartCity": "Smart City",
+      "commercial": "Commercial",
+      "mobile": "Mobile"
+    }
+  },
+  "archive": {
+    "seoTitle": "Projects",
+    "seoDescription": "Every project: AI video analytics platforms, national ETLE deployments, smart city CCTV, and more.",
+    "back": "Back to home",
+    "eyebrow": "Archive",
+    "title": "All projects",
+    "lead": "{count} projects — from a multi-tenant AI platform to a national-scale ETLE deployment. Pick one to see its scope and technical detail.",
+    "all": "All"
+  },
+  "footer": {
+    "tagline": "{title} — building AI video analytics that survive contact with real sites.",
+    "navigate": "Navigate",
+    "elsewhere": "Elsewhere",
+    "status": "Status",
+    "open": "Open to work",
+    "notLooking": "Not looking",
+    "built": "Built with Nuxt 3"
+  },
+  "palette": {
+    "label": "Command palette",
+    "placeholder": "Search sections, projects, or actions…",
+    "search": "Search",
+    "navigation": "Navigation",
+    "projects": "Projects",
+    "actions": "Actions",
+    "toggleTheme": "Toggle light / dark theme",
+    "copyEmail": "Copy email — {email}",
+    "copied": "Email copied",
+    "empty": "Nothing matches “{query}”.",
+    "navigate": "navigate",
+    "select": "select",
+    "close": "close"
+  },
+  "backToTop": "Back to top"
+}

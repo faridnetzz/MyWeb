@@ -1,10 +1,10 @@
 <script setup lang="ts">
 const { profile } = usePortfolio()
 
-useSeoMeta({
-  title: `${profile.name} — ${profile.title}`,
-  description: profile.summary
-})
+usePageSeo(
+  () => `${profile.value.name} — ${profile.value.title}`,
+  () => profile.value.summary
+)
 </script>
 
 <template>

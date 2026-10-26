@@ -26,9 +26,9 @@ const onLeave = (el: Element) => {
     <div class="wrap">
       <SectionHead
         num="04"
-        eyebrow="Career"
-        title="From splicing fiber to leading R&amp;D"
-        lead="Ten years of moving up the stack — cables, then networks, then code, then the team that writes it."
+        :eyebrow="$t('experience.eyebrow')"
+        :title="$t('experience.title')"
+        :lead="$t('experience.lead')"
       />
 
       <div class="timeline">

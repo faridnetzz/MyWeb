@@ -2,6 +2,7 @@
 import type { Project } from '~/composables/usePortfolio'
 
 const { featuredProjects, projects } = usePortfolio()
+const localePath = useLocalePath()
 const selected = ref<Project | null>(null)
 </script>
 
@@ -10,9 +11,9 @@ const selected = ref<Project | null>(null)
     <div class="wrap">
       <SectionHead
         num="03"
-        eyebrow="Selected work"
-        title="Systems that run on real cameras."
-        lead="Production deployments, not demos. Click a card for the scope, the constraints, and what I actually shipped."
+        :eyebrow="$t('work.eyebrow')"
+        :title="$t('work.title')"
+        :lead="$t('work.lead')"
       />
 
       <div class="projects">
@@ -28,8 +29,8 @@ const selected = ref<Project | null>(null)
       </div>
 
       <div class="section-foot reveal" v-reveal>
-        <NuxtLink class="btn btn-ghost" to="/projects">
-          Semua project ({{ projects.length }})
+        <NuxtLink class="btn btn-ghost" :to="localePath('/projects')">
+          {{ $t('work.all', { count: projects.length }) }}
           <AppIcon name="arrow-right" />
         </NuxtLink>
       </div>

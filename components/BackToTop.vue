@@ -13,7 +13,7 @@ const toTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
 
 <template>
   <Transition name="fade">
-    <button v-if="visible" class="totop" type="button" aria-label="Back to top" @click="toTop">
+    <button v-if="visible" class="totop" type="button" :aria-label="$t('backToTop')" @click="toTop">
       <AppIcon name="arrow-up" />
     </button>
   </Transition>

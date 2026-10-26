@@ -5,10 +5,14 @@ type Item = {
   label: string
   icon: string
   hint?: string
-  run: () => void | Promise<unknown>
+  /** awaited, but the result is ignored — navigateTo returns more than a promise */
+  run: () => unknown
 }
 
 const { profile, socials, navItems, projects } = usePortfolio()
+const { t } = useI18n()
+const localePath = useLocalePath()
+const language = useLanguageSwitch()
 const palette = useCommandPalette()
 const { toggle: toggleTheme } = useTheme()
 
@@ -18,62 +22,70 @@ const input = ref<HTMLInputElement | null>(null)
 const copied = ref(false)
 
 const items = computed<Item[]>(() => [
-  ...navItems.map((n) => ({
+  ...navItems.value.map((n) => ({
     id: `nav-${n.id}`,
-    group: 'Navigation',
+    group: t('palette.navigation'),
     label: n.label,
     icon: 'arrow-right',
     hint: `#${n.id}`,
-    run: () => navigateTo(`/#${n.id}`)
+    run: () => navigateTo(localePath(`/#${n.id}`))
   })),
   {
     id: 'nav-archive',
-    group: 'Navigation',
-    label: 'All projects',
+    group: t('palette.navigation'),
+    label: t('nav.allProjects'),
     icon: 'grid',
-    hint: '/projects',
-    run: () => navigateTo('/projects')
+    hint: localePath('/projects'),
+    run: () => navigateTo(localePath('/projects'))
   },
-  ...projects.map((p) => ({
+  ...projects.value.map((p) => ({
     id: `project-${p.slug}`,
-    group: 'Projects',
+    group: t('palette.projects'),
     label: p.name,
     icon: 'briefcase',
     hint: p.year,
-    run: () => navigateTo(`/projects?p=${p.slug}`)
+    run: () => navigateTo(localePath(`/projects?p=${p.slug}`))
   })),
   {
     id: 'action-theme',
-    group: 'Actions',
-    label: 'Toggle light / dark theme',
+    group: t('palette.actions'),
+    label: t('palette.toggleTheme'),
     icon: 'sun',
     run: () => toggleTheme()
   },
   {
+    id: 'action-language',
+    group: t('palette.actions'),
+    label: t('lang.switch', { name: language.target.value.name }),
+    icon: 'globe',
+    hint: language.target.value.code.toUpperCase(),
+    run: () => navigateTo(language.path.value)
+  },
+  {
     id: 'action-copy',
-    group: 'Actions',
-    label: copied.value ? 'Email copied' : `Copy email — ${profile.email}`,
+    group: t('palette.actions'),
+    label: copied.value ? t('palette.copied') : t('palette.copyEmail', { email: profile.value.email }),
     icon: copied.value ? 'check' : 'copy',
     run: async () => {
       try {
-        await navigator.clipboard.writeText(profile.email)
+        await navigator.clipboard.writeText(profile.value.email)
         copied.value = true
         setTimeout(() => (copied.value = false), 1600)
       } catch {
-        window.location.href = `mailto:${profile.email}`
+        window.location.href = `mailto:${profile.value.email}`
       }
     }
   },
   {
     id: 'action-cv',
-    group: 'Actions',
-    label: 'Download CV',
+    group: t('palette.actions'),
+    label: t('hero.downloadCv'),
     icon: 'file-text',
-    run: () => window.open(profile.resumeUrl, '_blank')
+    run: () => window.open(profile.value.resumeUrl, '_blank')
   },
-  ...socials.map((s) => ({
+  ...socials.value.map((s) => ({
     id: `social-${s.label}`,
-    group: 'Elsewhere',
+    group: t('footer.elsewhere'),
     label: s.label,
     icon: s.icon,
     hint: s.handle,
@@ -159,15 +171,15 @@ watch(palette.open, async (open) => {
     <Transition name="fade">
       <div v-if="palette.open.value" class="cmdk-backdrop" @click.self="palette.hide()">
         <Transition name="pop" appear>
-          <div class="cmdk" role="dialog" aria-modal="true" aria-label="Command palette">
+          <div class="cmdk" role="dialog" aria-modal="true" :aria-label="$t('palette.label')">
             <div class="cmdk-input">
               <AppIcon name="search" />
               <input
                 ref="input"
                 v-model="query"
                 type="text"
-                placeholder="Cari section, project, atau action…"
-                aria-label="Search"
+                :placeholder="$t('palette.placeholder')"
+                :aria-label="$t('palette.search')"
               />
               <kbd>ESC</kbd>
             </div>
@@ -189,13 +201,13 @@ watch(palette.open, async (open) => {
                   </button>
                 </template>
               </template>
-              <div v-else class="cmdk-empty">Nggak ada yang cocok sama “{{ query }}”.</div>
+              <div v-else class="cmdk-empty">{{ $t('palette.empty', { query }) }}</div>
             </div>
 
             <div class="cmdk-foot">
-              <span><kbd>↑</kbd><kbd>↓</kbd> navigate</span>
-              <span><kbd>↵</kbd> select</span>
-              <span><kbd>esc</kbd> close</span>
+              <span><kbd>↑</kbd><kbd>↓</kbd> {{ $t('palette.navigate') }}</span>
+              <span><kbd>↵</kbd> {{ $t('palette.select') }}</span>
+              <span><kbd>esc</kbd> {{ $t('palette.close') }}</span>
             </div>
           </div>
         </Transition>
