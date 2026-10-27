@@ -75,6 +75,7 @@
     "logoAlt": "{name} logo",
     "atAGlance": "At a glance",
     "architecture": "Architecture",
+    "interactiveDemo": "Interactive demo",
     "whatIDid": "What I did",
     "stackScope": "Stack & scope",
     "close": "Close",
@@ -93,6 +94,14 @@
       "commercial": "Commercial",
       "mobile": "Mobile"
     }
+  },
+  "gallery": {
+    "note": "Real screenshots from the platform. Number plates, faces, locations, and accounts are blurred.",
+    "label": "Screenshots",
+    "count": "{current} / {total}",
+    "prev": "Previous screenshot",
+    "next": "Next screenshot",
+    "close": "Close screenshot"
   },
   "archive": {
     "seoTitle": "Projects",

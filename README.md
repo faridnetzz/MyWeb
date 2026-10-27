@@ -35,6 +35,7 @@ components/
   ProjectCard.vue             kartu project, seluruh permukaan clickable
   ProjectModal.vue            metrics, highlights, stack per project
   ProjectVisual.vue           band visual kartu: cover, logo, atau pola fallback
+  ProjectGallery.vue          galeri screenshot di modal, dengan lightbox
   ProjectDiagram.vue          diagram arsitektur SVG
   sward/Demo.vue              mini dashboard SWard, data sintetis, lazy-loaded
   sward/Camera.vue            feed kamera sintetis per scene

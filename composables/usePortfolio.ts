@@ -33,14 +33,22 @@ export type Project = {
   highlights: string[]
   metrics: { value: string; label: string }[]
   tags: string[]
-  /** filename in public/projects/; omitted projects fall back to a pattern */
+  /** path in public/projects/; omitted projects fall back to their logo or a pattern */
   cover?: string
   /** built-in architecture diagram shown in the modal */
   diagram?: 'sward' | 'seribuwajah'
   /** transparent logo in public/projects/, shown on the card when there is no cover */
   logo?: string
-  /** interactive mock dashboard rendered at the top of the modal */
+  /** interactive mock dashboard rendered in the modal */
   demo?: 'sward'
+  /** screenshots opening the modal; see public/projects/README.md for the files each entry needs */
+  gallery?: GalleryImage[]
+}
+
+export type GalleryImage = {
+  /** path in public/projects/ without extension: `<src>.webp` full size, `<src>-thumb.webp` 800×500 */
+  src: string
+  caption: string
 }
 
 export type Experience = {
@@ -295,8 +303,102 @@ const content: Translatable<Portfolio> = {
       ],
       tags: ['DeepStream', 'YOLO', 'TensorRT', 'Multi-tenant', 'Edge AI', 'Face Recognition', 'ANPR'],
       diagram: 'sward',
-      logo: 'sward-logo.webp',
-      demo: 'sward'
+      cover: 'sward/cover.webp',
+      demo: 'sward',
+      // real screenshots; plates, faces, sites, and accounts are blurred before they land here
+      gallery: [
+        {
+          src: 'sward/operations',
+          caption: {
+            en: 'Operations Center: event volume, engine runtime, and model performance across every module, with natural-language search on top.',
+            id: 'Operations Center: volume event, runtime engine, dan performa model dari semua modul, dengan pencarian bahasa alami di atasnya.'
+          }
+        },
+        {
+          src: 'sward/vms',
+          caption: {
+            en: 'VMS live view: a drag-and-drop camera grid with layouts from a single feed up to 4×4.',
+            id: 'Live view VMS: grid kamera drag-and-drop dengan layout dari satu feed sampai 4×4.'
+          }
+        },
+        {
+          src: 'sward/playback',
+          caption: {
+            en: 'Playback: recordings per camera, with a disk guard that stops recording below 50 GB free.',
+            id: 'Playback: rekaman per kamera, dengan pengaman disk yang menghentikan rekaman saat sisa ruang di bawah 50 GB.'
+          }
+        },
+        {
+          src: 'sward/face-recognition',
+          caption: {
+            en: 'Face recognition: every captured face, searchable by feature, body image, face image, or 1:1 verification.',
+            id: 'Face recognition: setiap wajah yang tertangkap, bisa dicari berdasarkan fitur, gambar tubuh, gambar wajah, atau verifikasi 1:1.'
+          }
+        },
+        {
+          src: 'sward/face-search',
+          caption: {
+            en: 'Search by face image: an uploaded photo matched against enrolled identities — here my own face, at 79.2%.',
+            id: 'Cari dengan gambar wajah: foto yang diunggah dicocokkan dengan identitas terdaftar — di sini wajah saya sendiri, 79,2%.'
+          }
+        },
+        {
+          src: 'sward/vehicle',
+          caption: {
+            en: 'Vehicle analytics: per-class counting on a trigger line, with hourly volume and classification.',
+            id: 'Vehicle analytics: penghitungan per kelas lewat trigger line, dengan volume per jam dan klasifikasi.'
+          }
+        },
+        {
+          src: 'sward/anpr',
+          caption: {
+            en: 'ANPR: plate reads with a confidence score per vehicle. The plates themselves are blurred here.',
+            id: 'ANPR: hasil baca plat beserta skor keyakinan per kendaraan. Platnya sendiri disamarkan di sini.'
+          }
+        },
+        {
+          src: 'sward/people-counting',
+          caption: {
+            en: 'People counting on a retail floor: an IN/OUT line, occupancy zones, dwell time, and visitor attributes.',
+            id: 'People counting di area ritel: garis IN/OUT, zona okupansi, dwell time, dan atribut pengunjung.'
+          }
+        },
+        {
+          src: 'sward/object-counting',
+          caption: {
+            en: 'Object counting: cartons counted on a conveyor, each crossing logged with a snapshot.',
+            id: 'Object counting: kardus dihitung di conveyor, setiap lintasan tercatat beserta snapshot.'
+          }
+        },
+        {
+          src: 'sward/perimeter',
+          caption: {
+            en: 'Smart perimeter: intrusion zones drawn per camera; anyone stepping inside raises an alert.',
+            id: 'Smart perimeter: zona intrusi digambar per kamera; siapa pun yang masuk memicu alert.'
+          }
+        },
+        {
+          src: 'sward/perimeter-alert',
+          caption: {
+            en: 'Perimeter alerts delivered to Telegram with the snapshot, zone, and camera.',
+            id: 'Alert perimeter dikirim ke Telegram beserta snapshot, zona, dan kamera.'
+          }
+        },
+        {
+          src: 'sward/ppe',
+          caption: {
+            en: 'PPE detection: helmet, vest, and mask checks per person, each logged with a snapshot.',
+            id: 'Deteksi APD: pengecekan helm, rompi, dan masker per orang, masing-masing tercatat beserta snapshot.'
+          }
+        },
+        {
+          src: 'sward/login',
+          caption: {
+            en: 'Sign-in, with facial authentication as an alternative to a password.',
+            id: 'Halaman masuk, dengan facial authentication sebagai alternatif password.'
+          }
+        }
+      ]
     },
     {
       slug: 'etle-korlantas',

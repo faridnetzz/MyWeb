@@ -75,6 +75,7 @@
     "logoAlt": "Logo {name}",
     "atAGlance": "Sekilas",
     "architecture": "Arsitektur",
+    "interactiveDemo": "Demo interaktif",
     "whatIDid": "Yang saya kerjakan",
     "stackScope": "Stack & scope",
     "close": "Tutup",
@@ -93,6 +94,14 @@
       "commercial": "Komersial",
       "mobile": "Mobile"
     }
+  },
+  "gallery": {
+    "note": "Tangkapan layar asli dari platform. Plat nomor, wajah, lokasi, dan akun disamarkan.",
+    "label": "Tangkapan layar",
+    "count": "{current} / {total}",
+    "prev": "Tangkapan layar sebelumnya",
+    "next": "Tangkapan layar berikutnya",
+    "close": "Tutup tangkapan layar"
   },
   "archive": {
     "seoTitle": "Project",

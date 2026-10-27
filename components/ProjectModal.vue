@@ -43,7 +43,7 @@ onBeforeUnmount(() => {
           <div
             ref="dialog"
             class="modal"
-            :class="{ 'is-wide': project.demo }"
+            :class="{ 'is-wide': project.demo || project.gallery }"
             role="dialog"
             aria-modal="true"
             :aria-label="project.name"
@@ -65,8 +65,9 @@ onBeforeUnmount(() => {
             </div>
 
             <div class="modal-body">
-              <!-- the demo is the lead visual when there is one; the diagram moves below -->
-              <LazySwardDemo v-if="project.demo === 'sward'" />
+              <!-- the first visual a project has leads; the others follow the metrics -->
+              <ProjectGallery v-if="project.gallery" :items="project.gallery" />
+              <LazySwardDemo v-else-if="project.demo" />
               <ProjectDiagram v-else-if="project.diagram" :name="project.diagram" />
 
               <p>{{ project.description }}</p>
@@ -81,7 +82,12 @@ onBeforeUnmount(() => {
                 </div>
               </template>
 
-              <template v-if="project.demo && project.diagram">
+              <template v-if="project.gallery && project.demo">
+                <div class="modal-label">{{ $t('project.interactiveDemo') }}</div>
+                <LazySwardDemo />
+              </template>
+
+              <template v-if="project.diagram && (project.gallery || project.demo)">
                 <div class="modal-label">{{ $t('project.architecture') }}</div>
                 <ProjectDiagram :name="project.diagram" />
               </template>

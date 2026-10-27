@@ -1433,8 +1433,102 @@ button,
   fill: var(--accent);
 }
 
-/* a modal carrying an interactive demo needs the room */
+/* a modal carrying an interactive demo or a gallery needs the room */
 .modal.is-wide { width: min(1100px, 100%); }
+
+/* ---------- project gallery ---------- */
+
+.gallery { margin: 0 0 24px; }
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.gallery-item {
+  display: block;
+  padding: 0;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  background: var(--bg-inset);
+  cursor: zoom-in;
+  transition: border-color 0.2s var(--ease);
+}
+.gallery-item.is-lead {
+  grid-column: 1 / -1;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--r-md);
+}
+.gallery-item:hover { border-color: var(--accent-line); }
+.gallery-item:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.gallery-item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* screenshots carry their headings at the top */
+  object-position: top left;
+}
+.gallery figcaption {
+  margin-top: 10px;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--text-faint);
+}
+
+@media (max-width: 560px) {
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* full-page captures are tall, so the lightbox scrolls rather than shrinking them */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 105;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 0 clamp(12px, 3vw, 32px) 32px;
+  background: color-mix(in srgb, var(--bg) 94%, transparent);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.lightbox:focus { outline: none; }
+.lightbox-bar {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 12px 0;
+  background: var(--bg);
+}
+.lightbox-count {
+  margin-right: auto;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-dim);
+}
+.lightbox-figure { max-width: 1400px; margin: 0 auto; }
+.lightbox-figure img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-md);
+}
+.lightbox-figure figcaption {
+  max-width: 75ch;
+  margin: 14px auto 0;
+  text-align: center;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--text-dim);
+}
 
 @media (max-width: 560px) {
   .modal-body { padding: 18px 16px; }
