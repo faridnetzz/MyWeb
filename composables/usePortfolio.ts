@@ -553,41 +553,105 @@ const content: Translatable<Portfolio> = {
       name: { en: 'BRIN Emission Monitoring', id: 'Pemantauan Emisi BRIN' },
       client: 'BRIN',
       role: 'Data Engineering',
-      year: '2024',
+      year: '2026',
       status: 'delivered',
       featured: false,
       category: 'government',
       summary: {
-        en: 'Carbon and emission monitoring — camera pipelines, sensor ingestion, dashboards, and data engineering for research clients.',
-        id: 'Pemantauan karbon dan emisi — pipeline kamera, ingestion data sensor, dashboard, dan data engineering untuk klien riset.'
+        en: "Carbon emission monitoring for BRIN's B.J. Habibie Science and Technology Area: ANPR cameras at 10 points read each passing plate, classify vehicle and fuel type, and estimate CO₂ on a live dashboard.",
+        id: 'Pemantauan emisi karbon untuk Kawasan Sains dan Teknologi B.J. Habibie milik BRIN: kamera ANPR di 10 titik membaca setiap pelat yang melintas, mengklasifikasikan jenis kendaraan dan bahan bakar, lalu mengestimasi CO₂ di dashboard live.'
       },
       description: {
-        en: 'A monitoring stack for emission research: pull from cameras and sensors, normalise it, store it, and put it behind dashboards researchers can actually query.',
-        id: 'Stack pemantauan untuk riset emisi: ambil data dari kamera dan sensor, normalisasi, simpan, lalu sajikan lewat dashboard yang benar-benar bisa di-query para peneliti.'
+        en: "Measuring a research campus's traffic emissions without putting a sensor on every car. Four cameras covered ten points in one month: two fixed on the main gates, two moved weekly across eight intersections. Every plate read became a vehicle type, a fuel type, and an emission estimate. Over 30 days the system logged 85,677 detections from 51,882 distinct plates and 411 kg of CO₂, with Simpang Energi as the highest-emitting point.",
+        id: 'Mengukur emisi lalu lintas sebuah kawasan riset tanpa memasang sensor di setiap mobil. Empat kamera mencakup sepuluh titik dalam satu bulan: dua tetap di gerbang utama, dua dipindahkan setiap minggu ke delapan persimpangan. Setiap pelat yang terbaca menjadi jenis kendaraan, jenis bahan bakar, dan estimasi emisi. Selama 30 hari sistem mencatat 85.677 deteksi dari 51.882 pelat berbeda dan 411 kg CO₂, dengan Simpang Energi sebagai titik beremisi tertinggi.'
       },
       highlights: [
         {
-          en: 'Camera and sensor ingestion pipelines with scheduled collection',
-          id: 'Pipeline ingestion kamera dan sensor dengan pengambilan data terjadwal'
+          en: 'Rotation plan: two cameras fixed at Gate In and Gate Out, two relocated weekly, so four units covered all ten points in a month',
+          id: 'Rencana rotasi: dua kamera tetap di Gate In dan Gate Out, dua dipindahkan setiap minggu, sehingga empat unit mencakup sepuluh titik dalam sebulan'
         },
         {
-          en: 'Data normalisation and storage for long-running measurement series',
-          id: 'Normalisasi dan penyimpanan data untuk seri pengukuran jangka panjang'
+          en: 'Each point taken from site survey to commissioning: power, mounting, viewing angle, IP configuration, ANPR integration, and validation on the dashboard',
+          id: 'Setiap titik dikerjakan dari survei lokasi sampai commissioning: daya, pemasangan, sudut pandang, konfigurasi IP, integrasi ANPR, dan validasi di dashboard'
         },
         {
-          en: 'Dashboards for monitoring and reporting',
-          id: 'Dashboard untuk pemantauan dan pelaporan'
+          en: 'CO₂ estimated per detection from vehicle type and fuel emission factor (petrol 2.32, diesel 2.57 kg CO₂/L)',
+          id: 'CO₂ diestimasi per deteksi dari jenis kendaraan dan faktor emisi bahan bakar (bensin 2,32, solar 2,57 kg CO₂/L)'
+        },
+        {
+          en: 'Eco Emission Monitoring dashboard: live plate capture, searchable and exportable history, per-camera counting with unique plates, top emitters with their camera routes, a camera map, and an emission calculator',
+          id: 'Dashboard Eco Emission Monitoring: capture pelat secara live, riwayat yang bisa dicari dan diekspor, counting per kamera dengan pelat unik, kendaraan beremisi tertinggi beserta rute kameranya, peta kamera, dan kalkulator emisi'
+        },
+        {
+          en: 'Next-phase recommendations: make high emitters such as Simpang Energi and Gate Out fixed points, and complete the registered-vehicle database and fuel classification for more accurate estimates',
+          id: 'Rekomendasi tahap berikutnya: jadikan titik beremisi tinggi seperti Simpang Energi dan Gate Out sebagai titik tetap, serta lengkapi basis data kendaraan terdaftar dan klasifikasi bahan bakar agar estimasi lebih akurat'
         }
       ],
       metrics: [
-        { value: 'IoT', label: { en: 'sensor ingestion', id: 'ingestion sensor' } },
-        { value: { en: 'Dashboards', id: 'Dashboard' }, label: { en: 'for researchers', id: 'untuk peneliti' } }
+        { value: '10', label: { en: 'points, 4 cameras', id: 'titik, 4 kamera' } },
+        { value: { en: '85,677', id: '85.677' }, label: { en: 'detections in 30 days', id: 'deteksi dalam 30 hari' } },
+        { value: '411 kg', label: { en: 'CO₂ estimated', id: 'CO₂ terestimasi' } }
       ],
       tags: [
-        { en: 'Camera Pipelines', id: 'Pipeline Kamera' },
-        { en: 'Dashboards', id: 'Dashboard' },
-        'Data Engineering',
-        'IoT'
+        'ANPR',
+        'Vehicle tracking',
+        { en: 'Carbon emission', id: 'Emisi karbon' },
+        'Dashboard',
+        { en: 'Site survey', id: 'Survei lokasi' },
+        'Commissioning'
+      ],
+      cover: 'brin/cover.webp',
+      // real screenshots from the project report; plates, the rider, camera IPs, and OSD text are blurred
+      gallery: [
+        {
+          src: 'brin/dashboard',
+          caption: {
+            en: 'Dashboard: registered vehicles, total CO₂, detections, and cameras, with the daily emission trend over 30 days.',
+            id: 'Dashboard: kendaraan terdaftar, total CO₂, deteksi, dan kamera, dengan tren emisi harian selama 30 hari.'
+          }
+        },
+        {
+          src: 'brin/stream',
+          caption: {
+            en: 'Live ANPR feed per camera, with the latest plate capture, vehicle type, fuel type, and detection time.',
+            id: 'Feed ANPR live per kamera, dengan capture pelat terakhir, jenis kendaraan, jenis bahan bakar, dan waktu deteksi.'
+          }
+        },
+        {
+          src: 'brin/history',
+          caption: {
+            en: 'Detection history: every read from every camera, filterable by date, camera, hour, or plate, and exportable.',
+            id: 'Riwayat deteksi: setiap pembacaan dari semua kamera, bisa difilter berdasarkan tanggal, kamera, jam, atau pelat, dan bisa diekspor.'
+          }
+        },
+        {
+          src: 'brin/counting',
+          caption: {
+            en: 'Counting: total detections against unique plates, daily trend, registration status, and vehicle mix.',
+            id: 'Counting: total deteksi dibandingkan pelat unik, tren harian, status registrasi, dan komposisi kendaraan.'
+          }
+        },
+        {
+          src: 'brin/analytics',
+          caption: {
+            en: 'Analytics: vehicle and fuel mix, CO₂ per location, and the top 10 emitting vehicles with their camera routes.',
+            id: 'Analitik: komposisi kendaraan dan bahan bakar, CO₂ per lokasi, serta 10 kendaraan beremisi tertinggi beserta rute kameranya.'
+          }
+        },
+        {
+          src: 'brin/map',
+          caption: {
+            en: "Camera map across the campus; each marker opens that camera's live stream.",
+            id: 'Peta kamera di seluruh kawasan; setiap marker membuka live stream kamera tersebut.'
+          }
+        },
+        {
+          src: 'brin/calculator',
+          caption: {
+            en: 'Emission calculator: CO₂ for a trip from vehicle type, fuel, distance, consumption, and vehicle count.',
+            id: 'Kalkulator emisi: CO₂ sebuah perjalanan dari jenis kendaraan, bahan bakar, jarak, konsumsi, dan jumlah kendaraan.'
+          }
+        }
       ]
     },
     {
