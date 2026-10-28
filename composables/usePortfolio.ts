@@ -447,7 +447,9 @@ const content: Translatable<Portfolio> = {
         { en: 'Integration', id: 'Integrasi' },
         'Commissioning',
         { en: 'Project management', id: 'Manajemen project' }
-      ]
+      ],
+      // an illustration of the rollout, not site footage
+      cover: 'etle-korlantas/cover.webp'
     },
     {
       slug: 'sigap-seribu-wajah',
