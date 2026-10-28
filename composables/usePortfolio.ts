@@ -452,103 +452,6 @@ const content: Translatable<Portfolio> = {
       cover: 'etle-korlantas/cover.webp'
     },
     {
-      slug: 'sigap-seribu-wajah',
-      name: 'SIGAP / Seribu Wajah',
-      client: 'Diskominfo Bandar Lampung',
-      role: 'R&D Lead',
-      year: '2024',
-      status: 'delivered',
-      featured: true,
-      category: 'smartCity',
-      summary: {
-        en: 'Real-time AI CCTV analytics for Bandar Lampung city government — live face recognition and detection running across public camera feeds.',
-        id: 'Analitik CCTV berbasis AI secara real-time untuk Pemerintah Kota Bandar Lampung — face recognition dan deteksi langsung pada feed kamera publik.'
-      },
-      description: {
-        en: "A smart-city face recognition deployment on top of the city's existing CCTV network. The constraint was everything: cameras we did not choose, bandwidth we did not control, and a watchlist that had to match under street lighting.",
-        id: 'Deployment face recognition smart city di atas jaringan CCTV kota yang sudah ada. Semuanya adalah batasan: kamera yang bukan pilihan kami, bandwidth yang tidak kami kendalikan, dan watchlist yang tetap harus cocok di bawah lampu jalan.'
-      },
-      highlights: [
-        {
-          en: 'Face recognition over live city CCTV feeds with watchlist matching and alerting',
-          id: 'Face recognition pada feed CCTV kota secara langsung, dengan pencocokan watchlist dan alert'
-        },
-        {
-          en: 'Tuned recognition thresholds for low-light, off-angle, and low-resolution street cameras',
-          id: 'Tuning threshold pengenalan untuk kamera jalan yang minim cahaya, bersudut miring, dan beresolusi rendah'
-        },
-        {
-          en: 'Operator-facing dashboard for live alerts and event review',
-          id: 'Dashboard operator untuk alert langsung dan peninjauan event'
-        },
-        {
-          en: 'Worked directly with Diskominfo staff on handover and day-to-day operation',
-          id: 'Bekerja langsung dengan staf Diskominfo untuk serah terima dan operasional harian'
-        }
-      ],
-      metrics: [
-        { value: 'Real-time', label: { en: 'city-wide feeds', id: 'feed se-kota' } },
-        { value: 'Live', label: { en: 'watchlist matching', id: 'pencocokan watchlist' } },
-        { value: { en: 'Gov', id: 'Pemkot' }, label: { en: 'handover & training', id: 'serah terima & pelatihan' } }
-      ],
-      tags: [
-        'Face Recognition',
-        'Real-time',
-        'Smart City',
-        { en: 'CCTV Analytics', id: 'Analitik CCTV' },
-        'Dashboard'
-      ],
-      diagram: 'seribuwajah'
-    },
-    {
-      slug: 'gns-industrial-safety',
-      name: 'GNS — Safety & Compliance Suite',
-      client: 'GNS',
-      role: { en: 'Solution Design', id: 'Desain Solusi' },
-      year: '2024 — 2025',
-      status: 'production',
-      featured: true,
-      category: 'commercial',
-      summary: {
-        en: 'Commercial deployment of OSS Vision analytics: fire/smoke detection, face recognition, PPE compliance, and crowd monitoring, with hardware sizing and pricing.',
-        id: 'Deployment komersial analitik OSS Vision: deteksi api/asap, face recognition, kepatuhan APD, dan pemantauan keramaian, lengkap dengan sizing hardware dan penawaran harga.'
-      },
-      description: {
-        en: 'An industrial client wanted four different analytics on one camera estate. I designed the solution end to end — which module runs where, what GPU it needs, what it costs — then took it through technical presentation and deployment.',
-        id: 'Klien industri menginginkan empat analitik berbeda di satu jaringan kamera. Saya merancang solusinya dari awal sampai akhir — modul mana yang berjalan di mana, GPU apa yang dibutuhkan, berapa biayanya — lalu membawanya ke presentasi teknis hingga deployment.'
-      },
-      highlights: [
-        {
-          en: 'Fire/smoke detection tuned to reduce false alarms from steam, headlights, and sunlight',
-          id: 'Deteksi api/asap yang di-tuning untuk menekan alarm palsu dari uap, lampu kendaraan, dan sinar matahari'
-        },
-        {
-          en: 'PPE compliance checks (helmet, vest) at plant entry and work zones',
-          id: 'Pemeriksaan kepatuhan APD (helm, rompi) di pintu masuk pabrik dan area kerja'
-        },
-        {
-          en: 'Crowd monitoring and occupancy counting on shared areas',
-          id: 'Pemantauan keramaian dan penghitungan okupansi di area bersama'
-        },
-        {
-          en: 'Hardware sizing and commercial scenarios presented directly to the client',
-          id: 'Sizing hardware dan skenario komersial yang dipresentasikan langsung ke klien'
-        }
-      ],
-      metrics: [
-        { value: '4', label: { en: 'analytics modules', id: 'modul analitik' } },
-        { value: 'On-prem', label: { en: 'GPU deployment', id: 'deployment GPU' } },
-        { value: 'End-to-end', label: { en: 'design to delivery', id: 'dari desain sampai delivery' } }
-      ],
-      tags: [
-        { en: 'Fire/Smoke', id: 'Api/Asap' },
-        { en: 'PPE Detection', id: 'Deteksi APD' },
-        { en: 'Crowd Monitoring', id: 'Pemantauan Keramaian' },
-        { en: 'Hardware Sizing', id: 'Sizing Hardware' },
-        'Pre-sales'
-      ]
-    },
-    {
       slug: 'brin-emission-monitoring',
       name: { en: 'BRIN Emission Monitoring', id: 'Pemantauan Emisi BRIN' },
       client: 'BRIN',
@@ -652,6 +555,103 @@ const content: Translatable<Portfolio> = {
             id: 'Kalkulator emisi: CO₂ sebuah perjalanan dari jenis kendaraan, bahan bakar, jarak, konsumsi, dan jumlah kendaraan.'
           }
         }
+      ]
+    },
+    {
+      slug: 'sigap-seribu-wajah',
+      name: 'SIGAP / Seribu Wajah',
+      client: 'Diskominfo Bandar Lampung',
+      role: 'R&D Lead',
+      year: '2024',
+      status: 'delivered',
+      featured: true,
+      category: 'smartCity',
+      summary: {
+        en: 'Real-time AI CCTV analytics for Bandar Lampung city government — live face recognition and detection running across public camera feeds.',
+        id: 'Analitik CCTV berbasis AI secara real-time untuk Pemerintah Kota Bandar Lampung — face recognition dan deteksi langsung pada feed kamera publik.'
+      },
+      description: {
+        en: "A smart-city face recognition deployment on top of the city's existing CCTV network. The constraint was everything: cameras we did not choose, bandwidth we did not control, and a watchlist that had to match under street lighting.",
+        id: 'Deployment face recognition smart city di atas jaringan CCTV kota yang sudah ada. Semuanya adalah batasan: kamera yang bukan pilihan kami, bandwidth yang tidak kami kendalikan, dan watchlist yang tetap harus cocok di bawah lampu jalan.'
+      },
+      highlights: [
+        {
+          en: 'Face recognition over live city CCTV feeds with watchlist matching and alerting',
+          id: 'Face recognition pada feed CCTV kota secara langsung, dengan pencocokan watchlist dan alert'
+        },
+        {
+          en: 'Tuned recognition thresholds for low-light, off-angle, and low-resolution street cameras',
+          id: 'Tuning threshold pengenalan untuk kamera jalan yang minim cahaya, bersudut miring, dan beresolusi rendah'
+        },
+        {
+          en: 'Operator-facing dashboard for live alerts and event review',
+          id: 'Dashboard operator untuk alert langsung dan peninjauan event'
+        },
+        {
+          en: 'Worked directly with Diskominfo staff on handover and day-to-day operation',
+          id: 'Bekerja langsung dengan staf Diskominfo untuk serah terima dan operasional harian'
+        }
+      ],
+      metrics: [
+        { value: 'Real-time', label: { en: 'city-wide feeds', id: 'feed se-kota' } },
+        { value: 'Live', label: { en: 'watchlist matching', id: 'pencocokan watchlist' } },
+        { value: { en: 'Gov', id: 'Pemkot' }, label: { en: 'handover & training', id: 'serah terima & pelatihan' } }
+      ],
+      tags: [
+        'Face Recognition',
+        'Real-time',
+        'Smart City',
+        { en: 'CCTV Analytics', id: 'Analitik CCTV' },
+        'Dashboard'
+      ],
+      diagram: 'seribuwajah'
+    },
+    {
+      slug: 'gns-industrial-safety',
+      name: 'GNS — Safety & Compliance Suite',
+      client: 'GNS',
+      role: { en: 'Solution Design', id: 'Desain Solusi' },
+      year: '2024 — 2025',
+      status: 'production',
+      featured: true,
+      category: 'commercial',
+      summary: {
+        en: 'Commercial deployment of OSS Vision analytics: fire/smoke detection, face recognition, PPE compliance, and crowd monitoring, with hardware sizing and pricing.',
+        id: 'Deployment komersial analitik OSS Vision: deteksi api/asap, face recognition, kepatuhan APD, dan pemantauan keramaian, lengkap dengan sizing hardware dan penawaran harga.'
+      },
+      description: {
+        en: 'An industrial client wanted four different analytics on one camera estate. I designed the solution end to end — which module runs where, what GPU it needs, what it costs — then took it through technical presentation and deployment.',
+        id: 'Klien industri menginginkan empat analitik berbeda di satu jaringan kamera. Saya merancang solusinya dari awal sampai akhir — modul mana yang berjalan di mana, GPU apa yang dibutuhkan, berapa biayanya — lalu membawanya ke presentasi teknis hingga deployment.'
+      },
+      highlights: [
+        {
+          en: 'Fire/smoke detection tuned to reduce false alarms from steam, headlights, and sunlight',
+          id: 'Deteksi api/asap yang di-tuning untuk menekan alarm palsu dari uap, lampu kendaraan, dan sinar matahari'
+        },
+        {
+          en: 'PPE compliance checks (helmet, vest) at plant entry and work zones',
+          id: 'Pemeriksaan kepatuhan APD (helm, rompi) di pintu masuk pabrik dan area kerja'
+        },
+        {
+          en: 'Crowd monitoring and occupancy counting on shared areas',
+          id: 'Pemantauan keramaian dan penghitungan okupansi di area bersama'
+        },
+        {
+          en: 'Hardware sizing and commercial scenarios presented directly to the client',
+          id: 'Sizing hardware dan skenario komersial yang dipresentasikan langsung ke klien'
+        }
+      ],
+      metrics: [
+        { value: '4', label: { en: 'analytics modules', id: 'modul analitik' } },
+        { value: 'On-prem', label: { en: 'GPU deployment', id: 'deployment GPU' } },
+        { value: 'End-to-end', label: { en: 'design to delivery', id: 'dari desain sampai delivery' } }
+      ],
+      tags: [
+        { en: 'Fire/Smoke', id: 'Api/Asap' },
+        { en: 'PPE Detection', id: 'Deteksi APD' },
+        { en: 'Crowd Monitoring', id: 'Pemantauan Keramaian' },
+        { en: 'Hardware Sizing', id: 'Sizing Hardware' },
+        'Pre-sales'
       ]
     },
     {
