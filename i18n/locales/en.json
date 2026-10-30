@@ -80,6 +80,7 @@
     "stackScope": "Stack & scope",
     "close": "Close",
     "ask": "Ask about this project",
+    "visitSite": "Visit site",
     "diagramLabel": "Architecture diagram: {steps}",
     "status": {
       "production": "Production",

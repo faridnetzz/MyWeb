@@ -80,6 +80,7 @@
     "stackScope": "Stack & scope",
     "close": "Tutup",
     "ask": "Tanya soal project ini",
+    "visitSite": "Kunjungi situs",
     "diagramLabel": "Diagram arsitektur: {steps}",
     "status": {
       "production": "Produksi",

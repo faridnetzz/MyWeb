@@ -107,6 +107,10 @@ onBeforeUnmount(() => {
               <button class="btn btn-ghost btn-sm" type="button" @click="emit('close')">
                 {{ $t('project.close') }}
               </button>
+              <a v-if="project.url" class="btn btn-ghost btn-sm" :href="project.url" target="_blank" rel="noopener">
+                <AppIcon name="external" />
+                {{ $t('project.visitSite') }}
+              </a>
               <NuxtLink class="btn btn-primary btn-sm" :to="localePath('/#contact')" @click="emit('close')">
                 <AppIcon name="mail" />
                 {{ $t('project.ask') }}

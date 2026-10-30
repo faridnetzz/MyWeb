@@ -43,6 +43,8 @@ export type Project = {
   demo?: 'sward'
   /** screenshots opening the modal; see public/projects/README.md for the files each entry needs */
   gallery?: GalleryImage[]
+  /** public live site, linked from the modal */
+  url?: string
 }
 
 export type GalleryImage = {
@@ -653,6 +655,76 @@ const content: Translatable<Portfolio> = {
         { en: 'Hardware Sizing', id: 'Sizing Hardware' },
         'Pre-sales'
       ]
+    },
+    {
+      slug: 'nusa-cipta-solusi',
+      name: 'Nusa Cipta Solusi — Company Profile',
+      client: 'PT Nusa Cipta Solusi',
+      role: { en: 'Design & Development', id: 'Desain & Development' },
+      year: '2026',
+      status: 'production',
+      featured: false,
+      category: 'commercial',
+      summary: {
+        en: 'Company profile website for an IT and MEP systems integrator serving government, BUMN, and enterprise clients since 2012.',
+        id: 'Website company profile untuk sistem integrator TIK dan MEP yang melayani pemerintahan, BUMN, dan perusahaan sejak 2012.'
+      },
+      description: {
+        en: 'Nusa Cipta Solusi sells hardware, infrastructure, and after-sales service mostly through government procurement, so the site has to do two jobs: look credible to a procurement officer, and get a buyer talking to sales fast. I designed and built it as a single page in plain HTML, CSS, and JavaScript — no framework, so it loads quickly and hosts anywhere.',
+        id: 'Nusa Cipta Solusi menjual hardware, infrastruktur, dan layanan purna jual, sebagian besar lewat pengadaan pemerintah, jadi website-nya punya dua tugas: terlihat kredibel di mata pejabat pengadaan, dan membuat calon pembeli cepat terhubung ke sales. Saya mendesain dan membangunnya sebagai satu halaman dengan HTML, CSS, dan JavaScript murni — tanpa framework, sehingga cepat dimuat dan bisa di-hosting di mana saja.'
+      },
+      highlights: [
+        {
+          en: 'Designed and built the whole site: about, products, seven service cards, why-us, clients, partners, and contact',
+          id: 'Mendesain dan membangun seluruh website: tentang, produk, tujuh kartu layanan, keunggulan, klien, mitra, dan kontak'
+        },
+        {
+          en: 'Client wall of 28 logos, filterable across seven sectors from government to retail',
+          id: 'Dinding klien berisi 28 logo yang bisa difilter berdasarkan tujuh sektor, dari pemerintahan sampai retail'
+        },
+        {
+          en: 'Sales-led contact: a WhatsApp picker that opens a chat with one of four salespeople, plus phone, email, map, and links to the INAPROC, Tokopedia, and Mbizmarket storefronts',
+          id: 'Kontak yang berfokus ke sales: pemilih WhatsApp yang langsung membuka chat dengan salah satu dari empat sales, ditambah telepon, email, peta, dan tautan ke toko di INAPROC, Tokopedia, dan Mbizmarket'
+        },
+        {
+          en: 'SEO groundwork: meta and Open Graph tags, a share image, a canonical URL, and schema.org Organization data',
+          id: 'Fondasi SEO: meta tag dan Open Graph, gambar untuk dibagikan, canonical URL, dan data schema.org Organization'
+        },
+        {
+          en: 'A skip-to-content link, and scroll animations that switch off for visitors who prefer reduced motion',
+          id: 'Tautan skip-to-content, dan animasi scroll yang dimatikan untuk pengunjung yang memilih reduced motion'
+        }
+      ],
+      metrics: [
+        { value: '28', label: { en: 'clients across 7 sectors', id: 'klien di 7 sektor' } },
+        { value: '4', label: { en: 'salespeople one tap away', id: 'sales sekali klik' } },
+        { value: 'HTML · CSS · JS', label: { en: 'no framework', id: 'tanpa framework' } }
+      ],
+      tags: ['HTML', 'CSS', 'JavaScript', 'SEO', 'Responsive', 'Company Profile'],
+      cover: 'nusa-cipta-solusi/cover.webp',
+      gallery: [
+        {
+          src: 'nusa-cipta-solusi/home',
+          caption: { en: 'Hero and procurement registrations', id: 'Hero dan daftar platform pengadaan' }
+        },
+        {
+          src: 'nusa-cipta-solusi/services',
+          caption: { en: 'Seven services as photo cards', id: 'Tujuh layanan dalam kartu foto' }
+        },
+        {
+          src: 'nusa-cipta-solusi/products',
+          caption: { en: 'Product lines by category', id: 'Lini produk per kategori' }
+        },
+        {
+          src: 'nusa-cipta-solusi/clients',
+          caption: { en: 'Client logos with sector filter', id: 'Logo klien dengan filter sektor' }
+        },
+        {
+          src: 'nusa-cipta-solusi/contact',
+          caption: { en: 'Contact with per-salesperson WhatsApp', id: 'Kontak dengan WhatsApp per sales' }
+        }
+      ],
+      url: 'https://nusaciptasolusi.com'
     },
     {
       slug: 'siaga-donasi',
